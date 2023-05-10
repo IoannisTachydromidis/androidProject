@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#03A9F4">
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="250dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="150dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Erotisi1" />
+
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="145dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="60dp"
+        android:background="#3F51B6"
+        android:text="Γεωγραφία"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="145dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="35dp"
+        android:background="#3F51B5"
+        android:text="Ιστορία"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="145dp"
+        android:layout_height="95dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="60dp"
+        android:background="#3F51B6"
+        android:text="Logo quiz"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="145dp"
+        android:layout_height="95dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="35dp"
+        android:background="#3F51B6"
+        android:text="Τυχαίες ερωτήσεις"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
