@@ -7,7 +7,7 @@ public class QuestionDto {
     private String option1,option2,option3,option4;
     private int answer;
 
-    private String userSelectedOption;
+    private int userSelectedOption;
 
     public QuestionDto(String question, String option1, String option2, String option3, String option4, int answer) {
         this.question = question;
@@ -16,7 +16,7 @@ public class QuestionDto {
         this.option3 = option3;
         this.option4 = option4;
         this.answer = answer;
-        this.userSelectedOption = "";
+        this.userSelectedOption = 0;
     }
 
     public String getQuestion() {
@@ -43,11 +43,11 @@ public class QuestionDto {
         return answer;
     }
 
-    public String getUserSelectedOption() {
+    public int getUserSelectedOption() {
         return userSelectedOption;
     }
 
-    public void setUserSelectedOption(String userSelectedOption) {
+    public void setUserSelectedOption(int userSelectedOption) {
         this.userSelectedOption = userSelectedOption;
     }
 }

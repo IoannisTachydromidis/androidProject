@@ -35,6 +35,6 @@ public class QuestionsProvider {
         List<Question> selectedQuestions = questions.subList(0, numQuestionsToRetrieve);
 
         QuestionDtoMapper mapper = new QuestionDtoMapper();
-        return mapper.mapListToDto(questions);
+        return mapper.mapListToDto(selectedQuestions);
     }
 }
