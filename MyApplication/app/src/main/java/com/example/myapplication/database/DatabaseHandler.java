@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.database;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -12,8 +12,6 @@ import com.example.myapplication.model.Question;
 import java.util.ArrayList;
 import java.util.List;
 
-
-//Its purpose is to handle the database communication
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "mydatabase.db";
@@ -30,7 +28,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_OPTION3 = "option3";
     private static final String COLUMN_OPTION4 = "option4";
     private static final String COLUMN_ANSWER = "answer";
-
     private static final String COLUMN_CATEGORY = "category";
 
     public DatabaseHandler(@Nullable Context context) {
@@ -39,23 +36,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Create the table
-        String createTableQuery = "CREATE TABLE " + TABLE_NAME + "(" +
-                COLUMN_ID + " INTEGER PRIMARY KEY," +
-                COLUMN_QUESTION + " TEXT," +
-                COLUMN_OPTION1 + " TEXT," +
-                COLUMN_OPTION2 + " TEXT," +
-                COLUMN_OPTION3 + " TEXT," +
-                COLUMN_OPTION4 + " TEXT," +
-                COLUMN_ANSWER + " INTEGER," +
-                COLUMN_CATEGORY + " INTEGER" +
-                ")";
-        db.execSQL(createTableQuery);
+        // No need to implement this method since the table already exists
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // No need to implement this method since the table already exists
     }
 
     public List<Question> getQuestionsByCategory(int category) {
@@ -97,7 +83,4 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return questionsList;
     }
-
-
-
 }
