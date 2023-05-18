@@ -3,13 +3,15 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.myapplication.model.Question;
+import com.example.myapplication.provider.QuestionsProvider;
 
 import java.util.List;
 
@@ -21,11 +23,19 @@ public class QuizQuestions extends AppCompatActivity {
     private AppCompatButton btn_next;
     final String category = getIntent().getStringExtra("Category");
 
-    List<Questions> optionList = Database.getOptionsFromDB(category);
+    List<Question> optionList = Database.getOptionsFromDB(category);
     List<String> questionsList = Database.getQuestionsFromDB(category);
 
     private String userSelectedOption = "";
     private int currentPosition = 0;
+
+    //Use this QuestionProvider to retrieve 10 questions for a given category.
+    //The method that retrieves the questions is called getQuestions.
+    //The type of the parameter is int and it represents a category.
+    //The return value is a List of type QuestionDto.
+    //Note that QuestionDto has ONLY getters, with only exception being the userSelectedOption
+    private final QuestionsProvider provider = new QuestionsProvider(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
