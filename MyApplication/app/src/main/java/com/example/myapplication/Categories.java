@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 public class Categories extends AppCompatActivity {
 
-    private String selectedCategory;
+    private int selectedCategory;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,15 +21,15 @@ public class Categories extends AppCompatActivity {
         final Button logo = findViewById(R.id.btn_logo);
         final Button random = findViewById(R.id.btn_random);
 
-        final Button startBtn = findViewById(R.id.startButton);
 
         history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedCategory = "history";
+                selectedCategory = 1;
                 Intent intent = new Intent(Categories.this, QuizQuestions.class);
-                intent.putExtra("Category",selectedCategory);
+               // intent.putExtra("Category",1);
                 startActivity(intent);
+                System.out.println("ok after");
             }
         });
     }

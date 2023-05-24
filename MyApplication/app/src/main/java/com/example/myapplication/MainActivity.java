@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        System.out.println("ok here");
+
         Button greetButton = findViewById(R.id.greet_button);
         TextView helloText = findViewById(R.id.hello_textview);
 

@@ -22,7 +22,7 @@ public class QuestionsProvider {
 
 
     //Method to get 10 questions, from the DatabaseHandler, of the given category and map them to a QuestionDto list
-    private List<QuestionDto> getQuestions (int category) {
+    public List<QuestionDto> getQuestions(int category) {
         List<Question> questions = handler.getQuestionsByCategory(category);
 
         //pick 10 random from the questions list
