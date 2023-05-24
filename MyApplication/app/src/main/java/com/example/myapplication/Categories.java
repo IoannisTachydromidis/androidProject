@@ -1,13 +1,11 @@
 package com.example.myapplication;
 
-import androidx.annotation.ColorInt;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 public class Categories extends AppCompatActivity {
 
     private int selectedCategory;
@@ -25,11 +23,10 @@ public class Categories extends AppCompatActivity {
         history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedCategory = 1;
                 Intent intent = new Intent(Categories.this, QuizQuestions.class);
-               // intent.putExtra("Category",1);
+                intent.putExtra("Category","history");
                 startActivity(intent);
-                System.out.println("ok after");
+                //System.out.println("ok after");
             }
         });
     }

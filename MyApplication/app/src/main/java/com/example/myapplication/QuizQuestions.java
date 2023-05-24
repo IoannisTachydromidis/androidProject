@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,7 @@ public class QuizQuestions extends AppCompatActivity {
     private Button option1,option2,option3,option4;
     private AppCompatButton btn_next;
     //final int category = getIntent().getStringExtra("Category");
-    final int category = 1;
+    private int category = 1;
     private int userSelectedOption = 0;
     private int currentPosition = 0;
 
@@ -39,7 +40,7 @@ public class QuizQuestions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_questions);
-        System.out.println("ok finish");
+       // System.out.println("ok finish");
 
         questions =  provider.getQuestions(category);
 
@@ -66,11 +67,8 @@ public class QuizQuestions extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(userSelectedOption == 0){
-
+                    option1.setBackgroundResource(R.drawable.ic_launcher_foreground);
                     userSelectedOption = categorytoInt(option1.getText().toString());
-
-                    option1.setTextColor(Color.WHITE);
-
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
                 }
             }
@@ -80,11 +78,8 @@ public class QuizQuestions extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(userSelectedOption == 0){
-
+                    option2.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                     userSelectedOption = categorytoInt(option2.getText().toString());
-
-                    option2.setTextColor(Color.WHITE);
-
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
                 }
             }
@@ -94,11 +89,8 @@ public class QuizQuestions extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(userSelectedOption==0){
-
+                    option3.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                     userSelectedOption = categorytoInt(option3.getText().toString());
-
-                    option3.setTextColor(Color.WHITE);
-
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
                 }
             }
@@ -108,11 +100,8 @@ public class QuizQuestions extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(userSelectedOption == 0){
-
+                    option4.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                     userSelectedOption = categorytoInt(option4.getText().toString());
-
-                    option4.setTextColor(Color.WHITE);
-
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
                 }
             }
@@ -141,7 +130,12 @@ public class QuizQuestions extends AppCompatActivity {
         if( currentPosition < questions.size()){
             userSelectedOption = 0;
 
-            question_number.setText( String.valueOf(currentPosition) +"/10");
+
+            option2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#3F51B5")));
+            option3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#3F51B5")));
+            option4.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#3F51B5")));
+
+            question_number.setText( String.valueOf(currentPosition+1) +"/10");
             question.setText(questions.get(currentPosition).getQuestion());
             option1.setText(questions.get(currentPosition).getOption1().toString());
             option2.setText(questions.get(currentPosition).getOption2().toString());
