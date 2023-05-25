@@ -1,8 +1,6 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -59,7 +57,7 @@ public class QuizQuestions extends AppCompatActivity {
 
         question_number.setText( String.valueOf(currentPosition+1) +"/10");
 
-        question.setText(questions.get(1).getQuestion());
+        question.setText(questions.get(0).getQuestion());
         option1.setText(questions.get(0).getOption1().toString());
         option2.setText(questions.get(0).getOption2().toString());
         option3.setText(questions.get(0).getOption3().toString());
@@ -70,8 +68,8 @@ public class QuizQuestions extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(userSelectedOption == 0){
-                    option1.setBackgroundResource(R.drawable.ic_launcher_foreground);
-                    userSelectedOption = categorytoInt(option1.getText().toString());
+                    //option1.setBackgroundResource(R.drawable.ic_launcher_foreground);
+                    userSelectedOption = 1;
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
                 }
             }
@@ -81,8 +79,8 @@ public class QuizQuestions extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(userSelectedOption == 0){
-                    option2.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-                    userSelectedOption = categorytoInt(option2.getText().toString());
+                    //option2.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                    userSelectedOption = 2;
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
                 }
             }
@@ -92,8 +90,8 @@ public class QuizQuestions extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(userSelectedOption==0){
-                    option3.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-                    userSelectedOption = categorytoInt(option3.getText().toString());
+                   // option3.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                    userSelectedOption = 3;
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
                 }
             }
@@ -103,8 +101,8 @@ public class QuizQuestions extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(userSelectedOption == 0){
-                    option4.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-                    userSelectedOption = categorytoInt(option4.getText().toString());
+                   // option4.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                    userSelectedOption = 4;
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
                 }
             }
@@ -134,11 +132,6 @@ public class QuizQuestions extends AppCompatActivity {
         }
         if( currentPosition < questions.size()){
             userSelectedOption = 0;
-
-
-            option2.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#3F51B5")));
-            option3.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#3F51B5")));
-            option4.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#3F51B5")));
 
             question_number.setText( String.valueOf(currentPosition+1) +"/10");
             question.setText(questions.get(currentPosition).getQuestion());
