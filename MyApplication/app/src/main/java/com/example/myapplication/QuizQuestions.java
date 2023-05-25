@@ -23,8 +23,8 @@ public class QuizQuestions extends AppCompatActivity {
 
     private Button option1,option2,option3,option4;
     private AppCompatButton btn_next;
-    //final int category = getIntent().getStringExtra("Category");
-    private int category = 1;
+
+//    private int category = 1;
     private int userSelectedOption = 0;
     private int currentPosition = 0;
 
@@ -42,6 +42,8 @@ public class QuizQuestions extends AppCompatActivity {
         setContentView(R.layout.activity_quiz_questions);
        // System.out.println("ok finish");
 
+        int category = getIntent().getIntExtra("Category",0);
+
         questions =  provider.getQuestions(category);
 
         question = findViewById(R.id.question);
@@ -54,9 +56,10 @@ public class QuizQuestions extends AppCompatActivity {
 
         btn_next = findViewById(R.id.btn_next);
 
+
         question_number.setText( String.valueOf(currentPosition+1) +"/10");
 
-        question.setText(questions.get(0).getQuestion());
+        question.setText(questions.get(1).getQuestion());
         option1.setText(questions.get(0).getOption1().toString());
         option2.setText(questions.get(0).getOption2().toString());
         option3.setText(questions.get(0).getOption3().toString());
@@ -114,6 +117,8 @@ public class QuizQuestions extends AppCompatActivity {
                     Toast.makeText(QuizQuestions.this,"Please select an option",Toast.LENGTH_SHORT);
                 }
                 else {
+                    System.out.println(questions.get(currentPosition).getUserSelectedOption());
+                    System.out.println(questions.get(currentPosition).getAnswer());
                     nextQuestions();
                 }
             }

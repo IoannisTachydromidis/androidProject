@@ -30,6 +30,7 @@ public class Result extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Result.this,Categories.class);
                 startActivity(intent);
+                finish();
             }
         });
 
