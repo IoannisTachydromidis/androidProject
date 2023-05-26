@@ -208,7 +208,7 @@ public class QuizLogos extends AppCompatActivity {
         photos.put("lester", getResources().getDrawable(R.drawable.lester));
         photos.put("leeds", getResources().getDrawable(R.drawable.leeds));
         photos.put("fuhlam", getResources().getDrawable(R.drawable.fuhlam));
-        //add initialization of the rest
+        //add initialization of the rest also add the name as question in the database
         return true;
     }
 }
