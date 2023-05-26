@@ -42,6 +42,16 @@ public class Categories extends AppCompatActivity {
             }
         });
 
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3;
+                intent3 = new Intent(Categories.this,QuizLogos.class);
+                intent3.putExtra("Category",3);
+                startActivity(intent3);
+            }
+        });
+
         random.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
