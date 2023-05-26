@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,8 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.myapplication.dto.LogoDto;
+import com.example.myapplication.dto.QuestionDto;
+import com.example.myapplication.model.Question;
 import com.example.myapplication.provider.QuestionsProvider;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class QuizLogos extends AppCompatActivity {
@@ -28,13 +32,15 @@ public class QuizLogos extends AppCompatActivity {
     private int userSelectedOption = 0;
     private int currentPosition = 0;
 
+    private HashMap<String, Drawable> photos;
+
     //Use this QuestionProvider to retrieve 10 questions for a given category.
     //The method that retrieves the questions is called getQuestions.
     //The type of the parameter is int and it represents a category.
     //The return value is a List of type QuestionDto.
     //Note that QuestionDto has ONLY getters, with only exception being the userSelectedOption
     private final QuestionsProvider provider = new QuestionsProvider(this);
-    List<LogoDto> questions;
+    List<QuestionDto> questions;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -43,9 +49,11 @@ public class QuizLogos extends AppCompatActivity {
         setContentView(R.layout.activity_quiz_logos);
         // System.out.println("ok finish");
 
+        initializePhotos();
+
         int category = getIntent().getIntExtra("Category",0);
 
-        questions =  provider.getLogo(category);
+        questions = provider.getQuestions(category);
 
        logo = findViewById(R.id.logo);
         question_number = findViewById(R.id.questions_number);
@@ -60,7 +68,7 @@ public class QuizLogos extends AppCompatActivity {
 
         question_number.setText( String.valueOf(currentPosition+1) +"/10");
 
-        logo.setImageDrawable(getResources().getDrawable(R.drawable.arsenal));
+        logo.setImageDrawable(photos.get(questions.get(0).getQuestion()));
         option1.setText(questions.get(0).getOption1().toString());
         option2.setText(questions.get(0).getOption2().toString());
         option3.setText(questions.get(0).getOption3().toString());
@@ -137,7 +145,7 @@ public class QuizLogos extends AppCompatActivity {
             userSelectedOption = 0;
 
             question_number.setText( String.valueOf(currentPosition+1) +"/10");
-            logo.setImageDrawable(questions.get(0).getQuestion().getDrawable());
+            logo.setImageDrawable(photos.get(questions.get(currentPosition).getQuestion()));
             option1.setText(questions.get(currentPosition).getOption1().toString());
             option2.setText(questions.get(currentPosition).getOption2().toString());
             option3.setText(questions.get(currentPosition).getOption3().toString());
@@ -192,5 +200,15 @@ public class QuizLogos extends AppCompatActivity {
             }
         }
         return incorrectAnswers;
+    }
+
+    private boolean initializePhotos () {
+        photos = new HashMap<>();
+        photos.put("arsenal", getResources().getDrawable(R.drawable.arsenal));
+        photos.put("lester", getResources().getDrawable(R.drawable.lester));
+        photos.put("leeds", getResources().getDrawable(R.drawable.leeds));
+        photos.put("fuhlam", getResources().getDrawable(R.drawable.fuhlam));
+        //add initialization of the rest
+        return true;
     }
 }
