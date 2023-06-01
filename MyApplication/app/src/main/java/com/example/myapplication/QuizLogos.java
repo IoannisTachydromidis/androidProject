@@ -13,9 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.example.myapplication.dto.LogoDto;
 import com.example.myapplication.dto.QuestionDto;
-import com.example.myapplication.model.Question;
 import com.example.myapplication.provider.QuestionsProvider;
 
 import java.util.HashMap;
@@ -208,7 +206,26 @@ public class QuizLogos extends AppCompatActivity {
         photos.put("lester", getResources().getDrawable(R.drawable.lester));
         photos.put("leeds", getResources().getDrawable(R.drawable.leeds));
         photos.put("fuhlam", getResources().getDrawable(R.drawable.fuhlam));
-        //add initialization of the rest also add the name as question in the database
+        photos.put("lens", getResources().getDrawable(R.drawable.lens));
+        photos.put("lille", getResources().getDrawable(R.drawable.lille));
+        photos.put("marseille", getResources().getDrawable(R.drawable.marseille));
+        photos.put("psg", getResources().getDrawable(R.drawable.psg));
+        photos.put("eintracht", getResources().getDrawable(R.drawable.eintracht));
+        photos.put("dortmund", getResources().getDrawable(R.drawable.dortmund));
+        photos.put("wolsburg", getResources().getDrawable(R.drawable.wolsburg));
+        photos.put("gladbach", getResources().getDrawable(R.drawable.gladbach));
+        photos.put("paok", getResources().getDrawable(R.drawable.paok));
+        photos.put("pao", getResources().getDrawable(R.drawable.pao));
+        photos.put("giannnina", getResources().getDrawable(R.drawable.giannina));
+        photos.put("volos", getResources().getDrawable(R.drawable.volos));
+        photos.put("barca", getResources().getDrawable(R.drawable.barca));
+        photos.put("real", getResources().getDrawable(R.drawable.real));
+        photos.put("villiareal", getResources().getDrawable(R.drawable.villiareal));
+        photos.put("atletico", getResources().getDrawable(R.drawable.atletico));
+        photos.put("juventus", getResources().getDrawable(R.drawable.juventus));
+        photos.put("napoli", getResources().getDrawable(R.drawable.napoli));
+        photos.put("milan", getResources().getDrawable(R.drawable.milan));
+        photos.put("inter", getResources().getDrawable(R.drawable.inter));
         return true;
     }
 }
