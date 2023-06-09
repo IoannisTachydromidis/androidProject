@@ -53,7 +53,7 @@ public class QuizLogos extends AppCompatActivity {
 
         questions = provider.getQuestions(category);
 
-       logo = findViewById(R.id.logo);
+        logo = findViewById(R.id.logo);
         question_number = findViewById(R.id.questions_number);
 
         option1 = findViewById(R.id.option1);
@@ -76,44 +76,37 @@ public class QuizLogos extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(userSelectedOption == 0){
-                    //option1.setBackgroundResource(R.drawable.ic_launcher_foreground);
+
                     userSelectedOption = 1;
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-                }
             }
         });
         option2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(userSelectedOption == 0){
                     //option2.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                     userSelectedOption = 2;
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-                }
+
             }
         });
         option3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(userSelectedOption==0){
                     // option3.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                     userSelectedOption = 3;
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-                }
             }
         });
         option4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(userSelectedOption == 0){
                     // option4.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                     userSelectedOption = 4;
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-                }
             }
         });
 
@@ -216,7 +209,7 @@ public class QuizLogos extends AppCompatActivity {
         photos.put("gladbach", getResources().getDrawable(R.drawable.gladbach));
         photos.put("paok", getResources().getDrawable(R.drawable.paok));
         photos.put("pao", getResources().getDrawable(R.drawable.pao));
-        photos.put("giannnina", getResources().getDrawable(R.drawable.giannina));
+        photos.put("giannina", getResources().getDrawable(R.drawable.giannina));
         photos.put("volos", getResources().getDrawable(R.drawable.volos));
         photos.put("barca", getResources().getDrawable(R.drawable.barca));
         photos.put("real", getResources().getDrawable(R.drawable.real));

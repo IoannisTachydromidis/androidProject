@@ -1,49 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#03A9F4"
-    tools:context=".Categories">
+    android:background="#6814ECFF"
 
-    <Button
-        android:id="@+id/btn_history"
-        android:layout_width="200dp"
+
+
+    >
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:text="History"
-        android:textSize="20sp" />
+        android:layout_marginHorizontal="25dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/btn_geography"
-        android:layout_width="200dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/btn_history"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#7565C52A"
+                android:fontFamily="@font/gotham_medium"
+                android:lines="2"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="20dp"
+                android:text="Ιστορία"
+                android:textStyle="bold"
+                app:cornerRadius="5dp"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp"
+                tools:layout_editor_absoluteX="164dp"
+                tools:layout_editor_absoluteY="123dp" />
+
+            <Button
+                android:id="@+id/btn_geography"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#94956048"
+                android:fontFamily="@font/gotham_medium"
+                android:lines="2"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="20dp"
+                android:text="Γεωγραφία"
+                app:cornerRadius="5dp"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp"
+                tools:layout_editor_absoluteX="164dp"
+                tools:layout_editor_absoluteY="123dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <Button
+                android:id="@+id/btn_logo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#9430BCCF"
+                android:fontFamily="@font/gotham_medium"
+                android:lines="2"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="20dp"
+                android:text="Logo\nQuiz"
+                app:cornerRadius="5dp"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp"
+                tools:layout_editor_absoluteX="164dp"
+                tools:layout_editor_absoluteY="123dp" />
+
+            <Button
+                android:id="@+id/btn_random"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#94DF2D2D"
+                android:fontFamily="@font/gotham_medium"
+                android:lines="2"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="20dp"
+                android:text="Τυχαίες\nΕρωτήσεις"
+                app:cornerRadius="5dp"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp"
+                tools:layout_editor_absoluteX="164dp"
+                tools:layout_editor_absoluteY="123dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Geography"
-        android:textSize="20sp"
-        android:layout_below="@id/btn_history"
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/btn_logo"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Logo"
-        android:textSize="20sp"
-        android:layout_below="@id/btn_geography"
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/btn_random"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Random"
-        android:textSize="20sp"
-        android:layout_below="@id/btn_logo"
-        android:layout_marginTop="40dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/gotham_book"
+        android:text="Διάλεξε μια κατηγορία!"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

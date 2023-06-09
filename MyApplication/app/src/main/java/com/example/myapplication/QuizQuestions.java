@@ -67,22 +67,18 @@ public class QuizQuestions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(userSelectedOption == 0){
                     //option1.setBackgroundResource(R.drawable.ic_launcher_foreground);
                     userSelectedOption = 1;
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-                }
             }
         });
         option2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(userSelectedOption == 0){
                     //option2.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                     userSelectedOption = 2;
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-                }
             }
         });
         option3.setOnClickListener(new View.OnClickListener() {
@@ -100,11 +96,9 @@ public class QuizQuestions extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(userSelectedOption == 0){
                    // option4.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                     userSelectedOption = 4;
                     questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-                }
             }
         });
 
