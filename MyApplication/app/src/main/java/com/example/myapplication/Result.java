@@ -8,7 +8,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.example.myapplication.model.Score;
+
+import java.util.List;
+
 public class Result extends AppCompatActivity {
+
+    private List<Score> previousScores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +28,36 @@ public class Result extends AppCompatActivity {
         int numberOfCorrectAnswers = getIntent().getIntExtra("correct",0);
         int numberOfWrongAnswers = getIntent().getIntExtra("incorrect",0);
 
+
+
         correctAnswers.setText("Correct answers are "+String.valueOf(numberOfCorrectAnswers));
         wrongAnswers.setText("Wrong answers are "+String.valueOf(numberOfWrongAnswers));
 
+
+        switch (previousScores.size())       {
+            case 0:
+                break;
+
+            case 1:
+                //...
+
+            case 2:
+                //...
+
+            case 3:
+                //...
+
+            case 4:
+                //...
+
+        }
+
+        if (previousScores.size()>=5) {
+            //Print  the scores "previousScores.get(previousScores.size() -5);" to "previousScores.get(previousScores.size());"
+        }
+
+
+        previousScores.add(new Score(numberOfCorrectAnswers));
         start_new_quiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
