@@ -1,6 +1,5 @@
 package com.example.myapplication;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -40,7 +39,6 @@ public class QuizLogos extends AppCompatActivity {
     private final QuestionsProvider provider = new QuestionsProvider(this);
     List<QuestionDto> questions;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,6 +144,7 @@ public class QuizLogos extends AppCompatActivity {
             Intent intent = new Intent(QuizLogos.this,Result.class);
             intent.putExtra("correct",getCorrectAnswers());
             intent.putExtra("incorrect",getIncorrectAnswers());
+            intent.putExtra("name",getIntent().getCharSequenceExtra("name"));
             startActivity(intent);
         }
 

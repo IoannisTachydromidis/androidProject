@@ -26,6 +26,7 @@ public class Categories extends AppCompatActivity {
                 Intent intent1;
                 intent1 = new Intent(Categories.this,QuizQuestions.class);
                 intent1.putExtra("Category",1);
+                intent1.putExtra("name",getIntent().getCharSequenceExtra("name"));
                 startActivity(intent1);
                 //System.out.println("ok after");
             }
@@ -38,6 +39,7 @@ public class Categories extends AppCompatActivity {
                 Intent intent2;
                 intent2 = new Intent(Categories.this,QuizQuestions.class);
                 intent2.putExtra("Category",2);
+                intent2.putExtra("name",getIntent().getCharSequenceExtra("name"));
                 startActivity(intent2);
             }
         });
@@ -48,6 +50,7 @@ public class Categories extends AppCompatActivity {
                 Intent intent3;
                 intent3 = new Intent(Categories.this,QuizLogos.class);
                 intent3.putExtra("Category",3);
+                intent3.putExtra("name",getIntent().getCharSequenceExtra("name"));
                 startActivity(intent3);
             }
         });
@@ -58,6 +61,7 @@ public class Categories extends AppCompatActivity {
                 Intent intent4;
                 intent4 = new Intent(Categories.this,QuizQuestions.class);
                 intent4.putExtra("Category",4);
+                intent4.putExtra("name",getIntent().getCharSequenceExtra("name"));
                 startActivity(intent4);
             }
         });

@@ -138,6 +138,7 @@ public class QuizQuestions extends AppCompatActivity {
             Intent intent = new Intent(QuizQuestions.this,Result.class);
             intent.putExtra("correct",getCorrectAnswers());
             intent.putExtra("incorrect",getIncorrectAnswers());
+            intent.putExtra("name",getIntent().getCharSequenceExtra("name"));
             startActivity(intent);
         }
 

@@ -10,12 +10,13 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.myapplication.model.Score;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 public class Result extends AppCompatActivity {
 
-    private List<Score> previousScores;
-
+    private List previousScores = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,10 @@ public class Result extends AppCompatActivity {
         AppCompatButton start_new_quiz = findViewById(R.id.startNewQuiz);
         TextView correctAnswers = findViewById(R.id.correctAnswers);
         TextView wrongAnswers = findViewById(R.id.wrongAnswers);
+        TextView congratsText = findViewById(R.id.congratsText);
+
+        CharSequence name = getIntent().getCharSequenceExtra("name");
+        congratsText.setText("Συγχαρητήρια " + name);
 
         int numberOfCorrectAnswers = getIntent().getIntExtra("correct",0);
         int numberOfWrongAnswers = getIntent().getIntExtra("incorrect",0);
@@ -68,4 +73,5 @@ public class Result extends AppCompatActivity {
         });
 
     }
+
 }
