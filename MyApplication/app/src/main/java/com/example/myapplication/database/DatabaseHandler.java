@@ -7,11 +7,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.myapplication.mapper.model.Question;
+import com.example.myapplication.model.Question;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The DatabaseHandler class is responsible for managing SQLite database operations for a quiz application.
+ */
 public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "mydatabase.db";
@@ -32,6 +35,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private final Context context;
 
+    /**
+     * Constructs a DatabaseHandler object.
+     *
+     * @param context The application context.
+     */
     public DatabaseHandler(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
@@ -39,14 +47,22 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        // The onCreate method is called when the database is created for the first time.
+        // However, since the table already exists, we don't need to implement this method.
     }
-
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // No need to implement this method since the table already exists
+        // The onUpgrade method is called when the database needs to be upgraded to a new version.
+        // Since there is no specific implementation needed, we don't implement this method.
     }
 
+    /**
+     * Retrieves a list of questions from the database based on the specified category.
+     *
+     * @param category The category of questions to retrieve.
+     * @return A list of Question objects.
+     */
     public List<Question> getQuestionsByCategory(int category) {
         List<Question> questionsList = new ArrayList<>();
 
@@ -86,7 +102,4 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return questionsList;
     }
-
-
-
 }

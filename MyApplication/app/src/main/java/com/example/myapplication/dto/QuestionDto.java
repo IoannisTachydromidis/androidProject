@@ -1,14 +1,15 @@
 package com.example.myapplication.dto;
 
-//Method that defines the Question model dto
-//Its purpose is to be used for the application
+// Method that defines the Question model DTO
+// Its purpose is to be used for the application
 public class QuestionDto {
     private String question;
-    private String option1,option2,option3,option4;
+    private String option1, option2, option3, option4;
     private int answer;
 
     private int userSelectedOption;
 
+    // Constructor to initialize the QuestionDto object
     public QuestionDto(String question, String option1, String option2, String option3, String option4, int answer) {
         this.question = question;
         this.option1 = option1;
@@ -19,6 +20,7 @@ public class QuestionDto {
         this.userSelectedOption = 0;
     }
 
+    // Getter methods for retrieving the question and options
     public String getQuestion() {
         return question;
     }
@@ -39,10 +41,12 @@ public class QuestionDto {
         return option4;
     }
 
+    // Getter method for retrieving the answer
     public int getAnswer() {
         return answer;
     }
 
+    // Getter and setter methods for the user-selected option
     public int getUserSelectedOption() {
         return userSelectedOption;
     }

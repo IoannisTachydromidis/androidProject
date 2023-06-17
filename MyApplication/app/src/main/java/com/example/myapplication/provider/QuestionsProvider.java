@@ -5,7 +5,7 @@ import android.content.Context;
 import com.example.myapplication.database.DatabaseHandler;
 import com.example.myapplication.dto.QuestionDto;
 import com.example.myapplication.mapper.QuestionDtoMapper;
-import com.example.myapplication.mapper.model.Question;
+import com.example.myapplication.model.Question;
 
 import java.util.Collections;
 import java.util.List;

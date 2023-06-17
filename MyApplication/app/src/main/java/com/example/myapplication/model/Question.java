@@ -1,4 +1,4 @@
-package com.example.myapplication.mapper.model;
+package com.example.myapplication.model;
 
 //Method that defines the Question model
 //Its purpose is only to be used for the database
