@@ -1,9 +1,7 @@
 package com.example.myapplication.mapper;
 
 import com.example.myapplication.dto.LogoDto;
-import com.example.myapplication.dto.QuestionDto;
-import com.example.myapplication.model.Logo;
-import com.example.myapplication.model.Question;
+import com.example.myapplication.mapper.model.Logo;
 
 import java.util.ArrayList;
 import java.util.List;

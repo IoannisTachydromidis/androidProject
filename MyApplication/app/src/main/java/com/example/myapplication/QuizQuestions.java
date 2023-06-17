@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +21,6 @@ public class QuizQuestions extends AppCompatActivity {
     private Button option1,option2,option3,option4;
     private AppCompatButton btn_next;
 
-//    private int category = 1;
     private int userSelectedOption = 0;
     private int currentPosition = 0;
 
@@ -38,10 +36,13 @@ public class QuizQuestions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_questions);
-       // System.out.println("ok finish");
 
+        //στην μεταβλητή category τοποθετείτε ένα νούμερο απο το 1-4 που αναπαριστά την κατηγορία
+        //που έχει επιλέξει ο χρήστης(1-ιστορία,2-γεωγραφία,3-logos,4-τυχαίες ερωτήσεις)
         int category = getIntent().getIntExtra("Category",0);
 
+        // Η questions είναι μία λίστα στην οποία αποθηκεύονται τα δεδομένα απο την Βάση
+        // με παράμετρο την κατηγορία που έδωσε ο χρήστης
         questions =  provider.getQuestions(category);
 
         question = findViewById(R.id.question);
@@ -54,85 +55,73 @@ public class QuizQuestions extends AppCompatActivity {
 
         btn_next = findViewById(R.id.btn_next);
 
-
-        question_number.setText( String.valueOf(currentPosition+1) +"/10");
+        // firstly, we determine the previous questions and possible answers from our database with the help of questions
+        question_number.setText(currentPosition + 1 +"/10");
 
         question.setText(questions.get(0).getQuestion());
-        option1.setText(questions.get(0).getOption1().toString());
-        option2.setText(questions.get(0).getOption2().toString());
-        option3.setText(questions.get(0).getOption3().toString());
-        option4.setText(questions.get(0).getOption4().toString());
+        option1.setText(questions.get(0).getOption1());
+        option2.setText(questions.get(0).getOption2());
+        option3.setText(questions.get(0).getOption3());
+        option4.setText(questions.get(0).getOption4());
 
-        option1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        option1.setOnClickListener(view -> {
 
-                    //option1.setBackgroundResource(R.drawable.ic_launcher_foreground);
-                    userSelectedOption = 1;
-                    questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
+                //option1.setBackgroundResource(R.drawable.ic_launcher_foreground);
+                userSelectedOption = 1;
+
+                questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
+        });
+        option2.setOnClickListener(view -> {
+
+                //option2.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                userSelectedOption = 2;
+                questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
+        });
+        option3.setOnClickListener(view -> {
+
+            if(userSelectedOption==0){
+               // option3.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                userSelectedOption = 3;
+                questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
             }
         });
-        option2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        option4.setOnClickListener(view -> {
 
-                    //option2.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-                    userSelectedOption = 2;
-                    questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-            }
-        });
-        option3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(userSelectedOption==0){
-                   // option3.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-                    userSelectedOption = 3;
-                    questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-                }
-            }
-        });
-        option4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                   // option4.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-                    userSelectedOption = 4;
-                    questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-            }
+               // option4.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                userSelectedOption = 4;
+                questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
         });
 
-        btn_next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(userSelectedOption == 0){
-                    Toast.makeText(QuizQuestions.this,"Please select an option",Toast.LENGTH_SHORT);
-                }
-                else {
-                    System.out.println(questions.get(currentPosition).getUserSelectedOption());
-                    System.out.println(questions.get(currentPosition).getAnswer());
-                    nextQuestions();
-                }
+        btn_next.setOnClickListener(view -> {
+            if(userSelectedOption == 0){
+                Toast.makeText(QuizQuestions.this,"Please select an option",Toast.LENGTH_SHORT).show();
+            }
+            else {
+                System.out.println(questions.get(currentPosition).getUserSelectedOption());
+                System.out.println(questions.get(currentPosition).getAnswer());
+                nextQuestions();
             }
         });
 
     }
-
+    // Η μέθοδος nextQuestions ενημερώνει τις τιμές των ερωτήσεων ,απαντήσεων καθώς και της τρέχουσας θέσης
+    // Αν έχει φτάσει στο τέλος δημιουργείται ένα Intent για την εκκίνηση της Κλάσης Result περνόντας σε αυτήν
+    // τις σωστές και λάθος απαντήσεις και το όνομα του χρήστη
     private void nextQuestions(){
         currentPosition++;
 
         if( (currentPosition+1) == questions.size()){
-            btn_next.setText("Submit Quiz");
+            btn_next.setText("Υποβολή Quiz");
         }
         if( currentPosition < questions.size()){
             userSelectedOption = 0;
 
-            question_number.setText( String.valueOf(currentPosition+1) +"/10");
+            question_number.setText(currentPosition + 1 +"/10");
             question.setText(questions.get(currentPosition).getQuestion());
-            option1.setText(questions.get(currentPosition).getOption1().toString());
-            option2.setText(questions.get(currentPosition).getOption2().toString());
-            option3.setText(questions.get(currentPosition).getOption3().toString());
-            option4.setText(questions.get(currentPosition).getOption4().toString());
+            option1.setText(questions.get(currentPosition).getOption1());
+            option2.setText(questions.get(currentPosition).getOption2());
+            option3.setText(questions.get(currentPosition).getOption3());
+            option4.setText(questions.get(currentPosition).getOption4());
         }
         else{
             Intent intent = new Intent(QuizQuestions.this,Result.class);
@@ -142,20 +131,6 @@ public class QuizQuestions extends AppCompatActivity {
             startActivity(intent);
         }
 
-    }
-
-    private int categorytoInt(String category){
-        switch (category){
-            case "history":
-                return 1;
-            case "geography":
-                return 2;
-            case "logo":
-                return 3;
-            case "random":
-                return 4;
-        }
-        return 1;
     }
 
     private int getCorrectAnswers(){

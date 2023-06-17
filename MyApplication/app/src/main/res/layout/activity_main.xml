@@ -7,10 +7,23 @@
     android:layout_height="match_parent"
     android:background="@drawable/galazio">
 
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="282dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="77dp"
+        android:layout_marginBottom="42dp"
+        android:ems="10"
+        android:inputType="text"
+        android:saveEnabled="false"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/greet_button"
+        app:layout_constraintEnd_toEndOf="parent" />
     <Button
         android:id="@+id/greet_button"
         android:layout_width="183dp"
         android:layout_height="66dp"
+        android:layout_marginStart="100dp"
         android:layout_marginBottom="4dp"
         android:backgroundTint="#000000"
         android:text="ΠΑΙΞΕ"
@@ -23,17 +36,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="@color/white"
         app:strokeWidth="2dp" />
-
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="282dp"
-        android:layout_height="52dp"
-        android:layout_marginEnd="77dp"
-        android:layout_marginBottom="42dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name"
-        android:saveEnabled="false"
-        app:layout_constraintBottom_toTopOf="@+id/greet_button"
-        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,38 +2,55 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    private boolean nameEmpty = false;
+    private EditText objEditTextName;
+    private Button greetButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button greetButton = findViewById(R.id.greet_button);
-        EditText objEditTextName = findViewById(R.id.editTextText);
-        //System.out.println("ok here");
+        greetButton = findViewById(R.id.greet_button);
+        objEditTextName = findViewById(R.id.editTextText);
+        objEditTextName.setHint("Name");
+
+        if (savedInstanceState != null){
+//Retrieve data from the Bundle (other methods include getInt(), getBoolean() etc)
+            CharSequence userText = savedInstanceState.getCharSequence("savedUserText");
+//Restore the dynamic state of the UI
+            objEditTextName.setText(userText);
+
+        }
+        else{
+//Initialize the UI
+            objEditTextName.setText("");
+            objEditTextName.setHint("Name");
+        }
+
         CharSequence nameText = objEditTextName.getText();
-        if(nameText.equals(" "))
-            nameEmpty = true;
-        greetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(nameEmpty==false){
-                    Intent intent = new Intent(MainActivity.this, Categories.class);
-                    intent.putExtra("name",nameText);
-                    startActivity(intent);
-                }
+        // listener for the play button
+        greetButton.setOnClickListener(v -> {
+            // check if the user doesn't give name
+            if( !nameText.toString().isEmpty() ){
+                Intent intent = new Intent(MainActivity.this, Categories.class);
+                intent.putExtra("name",nameText);
+                startActivity(intent);
             }
         });
 
-
+    }
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+//Save data to the Bundle (other methods include putInt(), putBoolean() etc)
+        CharSequence userText = objEditTextName.getText();
+        outState.putCharSequence("savedUserText", userText);
     }
 }

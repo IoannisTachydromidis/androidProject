@@ -9,8 +9,8 @@ import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
-import com.example.myapplication.model.Logo;
-import com.example.myapplication.model.Question;
+import com.example.myapplication.mapper.model.Logo;
+import com.example.myapplication.mapper.model.Question;
 
 import java.util.ArrayList;
 import java.util.List;

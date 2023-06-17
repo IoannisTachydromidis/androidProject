@@ -1,10 +1,8 @@
-package com.example.myapplication.model;
+package com.example.myapplication.mapper.model;
 
 //Method that defines the Question model
 //Its purpose is only to be used for the database
 public class Question {
-
-    private Long id;
 
     private String question;
     private String option1,option2,option3,option4;
@@ -12,7 +10,6 @@ public class Question {
     private int category;
 
     public Question(Long id, String question, String option1, String option2, String option3, String option4, int answer, int category) {
-        this.id = id;
         this.question = question;
         this.option1 = option1;
         this.option2 = option2;
@@ -22,9 +19,6 @@ public class Question {
         this.category = category;
     }
 
-    public Question() {
-
-    }
 
     public String getQuestion() {
         return question;
@@ -70,15 +64,5 @@ public class Question {
         return answer;
     }
 
-    public void setAnswer(int answer) {
-        this.answer = answer;
-    }
 
-    public int getCategory() {
-        return category;
-    }
-
-    public void setCategory(int category) {
-        this.category = category;
-    }
 }

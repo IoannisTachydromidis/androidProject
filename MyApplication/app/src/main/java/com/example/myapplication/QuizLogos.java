@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,7 +21,7 @@ public class QuizLogos extends AppCompatActivity {
     private TextView question_number;
     private ImageView logo;
 
-    private Button option1,option2,option3,option4;
+    private Button option1, option2, option3, option4;
     private AppCompatButton btn_next;
 
     //    private int category = 1;
@@ -31,11 +30,11 @@ public class QuizLogos extends AppCompatActivity {
 
     private HashMap<String, Drawable> photos;
 
-    //Use this QuestionProvider to retrieve 10 questions for a given category.
-    //The method that retrieves the questions is called getQuestions.
-    //The type of the parameter is int and it represents a category.
-    //The return value is a List of type QuestionDto.
-    //Note that QuestionDto has ONLY getters, with only exception being the userSelectedOption
+    // Use this QuestionProvider to retrieve 10 questions for a given category.
+    // The method that retrieves the questions is called getQuestions.
+    // The type of the parameter is int and it represents a category.
+    // The return value is a List of type QuestionDto.
+    // Note that QuestionDto has ONLY getters, with the only exception being the userSelectedOption
     private final QuestionsProvider provider = new QuestionsProvider(this);
     List<QuestionDto> questions;
 
@@ -47,7 +46,7 @@ public class QuizLogos extends AppCompatActivity {
 
         initializePhotos();
 
-        int category = getIntent().getIntExtra("Category",0);
+        int category = getIntent().getIntExtra("Category", 0);
 
         questions = provider.getQuestions(category);
 
@@ -62,137 +61,103 @@ public class QuizLogos extends AppCompatActivity {
         btn_next = findViewById(R.id.btn_next);
 
 
-        question_number.setText( String.valueOf(currentPosition+1) +"/10");
+        question_number.setText(currentPosition + 1 + "/10");
 
         logo.setImageDrawable(photos.get(questions.get(0).getQuestion()));
-        option1.setText(questions.get(0).getOption1().toString());
-        option2.setText(questions.get(0).getOption2().toString());
-        option3.setText(questions.get(0).getOption3().toString());
-        option4.setText(questions.get(0).getOption4().toString());
+        option1.setText(questions.get(0).getOption1());
+        option2.setText(questions.get(0).getOption2());
+        option3.setText(questions.get(0).getOption3());
+        option4.setText(questions.get(0).getOption4());
 
-        option1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                    userSelectedOption = 1;
-                    questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-            }
+        option1.setOnClickListener(view -> {
+            // Ο χρήστης επιλέγει την πρώτη επιλογή
+            userSelectedOption = 1;
+            questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
         });
-        option2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                    //option2.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-                    userSelectedOption = 2;
-                    questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-
-            }
+        option2.setOnClickListener(view -> {
+            // Ο χρήστης επιλέγει τη δεύτερη επιλογή
+            userSelectedOption = 2;
+            questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
         });
-        option3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                    // option3.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-                    userSelectedOption = 3;
-                    questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-            }
+        option3.setOnClickListener(view -> {
+            // Ο χρήστης επιλέγει την τρίτη επιλογή
+            userSelectedOption = 3;
+            questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
         });
-        option4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                    // option4.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-                    userSelectedOption = 4;
-                    questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
-            }
+        option4.setOnClickListener(view -> {
+            // Ο χρήστης επιλέγει την τέταρτη επιλογή
+            userSelectedOption = 4;
+            questions.get(currentPosition).setUserSelectedOption(userSelectedOption);
         });
 
-        btn_next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(userSelectedOption == 0){
-                    Toast.makeText(QuizLogos.this,"Please select an option",Toast.LENGTH_SHORT);
-                }
-                else {
-                    System.out.println(questions.get(currentPosition).getUserSelectedOption());
-                    System.out.println(questions.get(currentPosition).getAnswer());
-                    nextQuestions();
-                }
+        btn_next.setOnClickListener(view -> {
+            if (userSelectedOption == 0) {
+                // Εμφάνιση μηνύματος εάν ο χρήστης δεν έχει επιλέξει κάποια επιλογή
+                Toast.makeText(QuizLogos.this, "Please select an option", Toast.LENGTH_SHORT).show();
+            } else {
+                // Εμφάνιση στοιχείων επιλογής και απάντησης
+                System.out.println(questions.get(currentPosition).getUserSelectedOption());
+                System.out.println(questions.get(currentPosition).getAnswer());
+                nextQuestions();
             }
         });
-
     }
-
-    private void nextQuestions(){
+    // Η μέθοδος nextQuestions ενημερώνει τις τιμές των ερωτήσεων ,απαντήσεων καθώς και της τρέχουσας θέσης
+    // Αν έχει φτάσει στο τέλος δημιουργείται ένα Intent για την εκκίνηση της Κλάσης Result περνόντας σε αυτήν
+    // τις σωστές και λάθος απαντήσεις και το όνομα του χρήστη
+    private void nextQuestions() {
         currentPosition++;
 
-        if( (currentPosition+1) == questions.size()){
-            btn_next.setText("Submit Quiz");
+        if ((currentPosition + 1) == questions.size()) {
+            btn_next.setText("Υποβολή Quiz");
         }
-        if( currentPosition < questions.size()){
+        if (currentPosition < questions.size()) {
             userSelectedOption = 0;
 
-            question_number.setText( String.valueOf(currentPosition+1) +"/10");
+            question_number.setText(currentPosition + 1 + "/10");
             logo.setImageDrawable(photos.get(questions.get(currentPosition).getQuestion()));
-            option1.setText(questions.get(currentPosition).getOption1().toString());
-            option2.setText(questions.get(currentPosition).getOption2().toString());
-            option3.setText(questions.get(currentPosition).getOption3().toString());
-            option4.setText(questions.get(currentPosition).getOption4().toString());
-        }
-        else{
-            Intent intent = new Intent(QuizLogos.this,Result.class);
-            intent.putExtra("correct",getCorrectAnswers());
-            intent.putExtra("incorrect",getIncorrectAnswers());
-            intent.putExtra("name",getIntent().getCharSequenceExtra("name"));
+            option1.setText(questions.get(currentPosition).getOption1());
+            option2.setText(questions.get(currentPosition).getOption2());
+            option3.setText(questions.get(currentPosition).getOption3());
+            option4.setText(questions.get(currentPosition).getOption4());
+        } else {
+            Intent intent = new Intent(QuizLogos.this, Result.class);
+            intent.putExtra("correct", getCorrectAnswers());
+            intent.putExtra("incorrect", getIncorrectAnswers());
+            intent.putExtra("name", getIntent().getCharSequenceExtra("name"));
             startActivity(intent);
         }
-
     }
 
-    private int categorytoInt(String category){
-        switch (category){
-            case "history":
-                return 1;
-            case "geography":
-                return 2;
-            case "logo":
-                return 3;
-            case "random":
-                return 4;
-        }
-        return 1;
-    }
-
-    private int getCorrectAnswers(){
+    private int getCorrectAnswers() {
         int correctAnswers = 0;
 
-        for(int i=0; i< questions.size(); i++){
+        for (int i = 0; i < questions.size(); i++) {
             final int getUserSelectedAnswer = questions.get(i).getUserSelectedOption();
             final int getAnswer = questions.get(i).getAnswer();
 
-            if(getUserSelectedAnswer == getAnswer){
+            if (getUserSelectedAnswer == getAnswer) {
                 correctAnswers++;
             }
         }
         return correctAnswers;
     }
 
-    private int getIncorrectAnswers(){
+    private int getIncorrectAnswers() {
         int incorrectAnswers = 0;
 
-        for(int i=0; i< questions.size(); i++){
+        for (int i = 0; i < questions.size(); i++) {
             final int getUserSelectedAnswer = questions.get(i).getUserSelectedOption();
             final int getAnswer = questions.get(i).getAnswer();
 
-            if(getUserSelectedAnswer != getAnswer){
+            if (getUserSelectedAnswer != getAnswer) {
                 incorrectAnswers++;
             }
         }
         return incorrectAnswers;
     }
 
-    private boolean initializePhotos () {
+    private void initializePhotos() {
         photos = new HashMap<>();
         photos.put("arsenal", getResources().getDrawable(R.drawable.arsenal));
         photos.put("lester", getResources().getDrawable(R.drawable.lester));
@@ -218,6 +183,5 @@ public class QuizLogos extends AppCompatActivity {
         photos.put("napoli", getResources().getDrawable(R.drawable.napoli));
         photos.put("milan", getResources().getDrawable(R.drawable.milan));
         photos.put("inter", getResources().getDrawable(R.drawable.inter));
-        return true;
     }
 }

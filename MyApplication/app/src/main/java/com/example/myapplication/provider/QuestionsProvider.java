@@ -8,8 +8,8 @@ import com.example.myapplication.dto.QuestionDto;
 import com.example.myapplication.exceptions.WrongCategoryException;
 import com.example.myapplication.mapper.LogoDtoMapper;
 import com.example.myapplication.mapper.QuestionDtoMapper;
-import com.example.myapplication.model.Logo;
-import com.example.myapplication.model.Question;
+import com.example.myapplication.mapper.model.Logo;
+import com.example.myapplication.mapper.model.Question;
 
 import java.util.Collections;
 import java.util.List;

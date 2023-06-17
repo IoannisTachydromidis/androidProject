@@ -14,76 +14,44 @@
         android:textColor="#0288D1"
         android:textSize="30sp"
         android:textStyle="italic" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_marginTop="150dp"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/correctAnswers"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:text="Correct answers 0"
+            android:textSize="20sp"
+            android:textColor="#558B2F"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/correctAnswers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="20dp"
-                android:text="Correct answers 0"
-                android:textColor="#558B2F"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/wrongAnswers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="20dp"
-                android:text="Wrong answers 0"
-                android:textColor="#FFD51616"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/wrongAnswers"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="TextView 3" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:text="TextView 4" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:text="TextView 5" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:text="TextView 6" />
-        </LinearLayout>
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="20dp"
+            android:text="Wrong answers 0"
+            android:textSize="20sp"
+            android:textColor="#FFD51616"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:text="Start new Quiz"
-        android:textColor="#FFFFFF"
+        android:text="Παίξε ξανά"
+        android:backgroundTint="#10E11C"
         android:textStyle="bold"
         android:id="@+id/startNewQuiz"/>
 
