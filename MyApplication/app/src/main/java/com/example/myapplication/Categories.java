@@ -30,7 +30,6 @@ public class Categories extends AppCompatActivity {
         // listener for the category geography that starts the QuizQuestion activity and
         // gives the value 2 and the string geography , and to know the activity in which category he is
         geography.setOnClickListener(view -> {
-            System.out.println("ok here");
             Intent intent2;
             intent2 = new Intent(Categories.this,QuizQuestions.class);
             intent2.putExtra("Category",2);
